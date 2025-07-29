@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Control de Accesos para el SENA</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="/img/logo-sena-negro-png-2022.png">
+</head>
+<body>
+    <!-- Sidebar lateral y botón de menú -->
+    <div class="flex min-h-screen">
+        <!-- Botón para mostrar el sidebar en móvil -->
+        <button id="sidebarToggle" class="fixed top-4 left-4 z-50 md:hidden bg-[#39A900] text-white p-2 rounded shadow-lg focus:outline-none">
+            <!-- Icono de menú hamburguesa -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+
+        <!-- Sidebar lateral -->
+        <aside id="sidebar"
+            class="w-64 flex-shrink-0 sticky top-0 h-screen z-40 bg-[#39A900] text-white flex flex-col"
+            style="background-color: #39A900 !important; opacity: 1 !important; overflow-y: auto;">
+            <div class="p-6 flex flex-col items-center border-b border-gray-700 flex-shrink-0">
+                <img src="/img/logo-sena-negro-png-2022.png" alt="Logo SENA" class="sena-logo w-20 h-20 mb-2">
+                <h1 class="text-lg font-bold text-center">Sistema de Control de Accesos para el SENA</h1>
+            </div>
+            <nav class="mt-6">
+                <ul class="space-y-2 px-4">
+                    <li><a href="#inicio" class="nav-link block py-2 px-3 rounded hover:bg-green-800">Inicio</a></li>
+                    <li><a href="#introduccion" class="nav-link block py-2 px-3 rounded hover:bg-green-800">1. Introducción</a></li>
+                    <li><a href="#abstract" class="nav-link block py-2 px-3 rounded hover:bg-green-800">2. Abstract</a></li>
+                    <li><a href="#problematica" class="nav-link block py-2 px-3 rounded hover:bg-green-800">3. Descripción</a></li>
+                    <li><a href="#objetivos" class="nav-link block py-2 px-3 rounded hover:bg-green-800">4. Objetivos</a></li>
+                    <li><a href="#justificacion" class="nav-link block py-2 px-3 rounded hover:bg-green-800">5. Justificación</a></li>
+                    <li><a href="#impacto" class="nav-link block py-2 px-3 rounded hover:bg-green-800">6. Impacto</a></li>
+                    <li><a href="#alcance" class="nav-link block py-2 px-3 rounded hover:bg-green-800">7. Alcance</a></li>
+                    <li><a href="#tecnologias" class="nav-link block py-2 px-3 rounded hover:bg-green-800">8. Tecnologías</a></li>
+                    <li><a href="#antecedentes" class="nav-link block py-2 px-3 rounded hover:bg-green-800">9. Antecedentes</a></li>
+                    <li><a href="#prototipo" class="nav-link block py-2 px-3 rounded hover:bg-green-800">10. Prototipo</a></li>
+                    <li><a href="#construccion-codigo" class="nav-link block py-2 px-3 rounded hover:bg-green-800">11. Construcción de Código</a></li>
+                    <li><a href="#recomendaciones" class="nav-link block py-2 px-3 rounded hover:bg-green-800">12. Recomendaciones</a></li>
+                    <li><a href="#agradecimientos" class="nav-link block py-2 px-3 rounded hover:bg-green-800">13. Agradecimientos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Contenido principal -->
+        <div class="flex-1">
+            <!-- Encabezado solo para móvil -->
+            <header class="main-header md:hidden">
+                <div class="header-content flex items-center justify-between p-4 bg-gray-900 text-white">
+                    <img src="/img/logo-sena-negro-png-2022.png" alt="Logo SENA" class="sena-logo w-12 h-12">
+                    <h1 class="text-base font-bold">Sistema de Control de Accesos para el SENA</h1>
+                </div>
+            </header>
+
+            <main class="p-4 md:p-8 text-lg md:text-xl">
+                <section id="inicio" class="module active">
+                    <div class="module-content">
+                        <!-- Tarjeta giratoria grande con logo y datos de inicio -->
+                        <div class="flex justify-center mb-8">
+                            <div class="group perspective w-full max-w-3xl h-auto min-h-[650px]">
+                                <div class="relative w-full min-h-[650px] duration-700 transform-style-preserve-3d group-hover:rotate-y-180 transition-transform">
+                                    <!-- Cara frontal: logo más grande -->
+                                    <div class="absolute w-full min-h-[650px] h-full backface-hidden flex items-center justify-center bg-white rounded-xl shadow-lg">
+                                        <img src="/img/logo_control.jpeg" alt="Logo Control de Accesos" class="w-[28rem] h-[28rem] md:w-[32rem] md:h-[32rem] object-contain rounded-xl shadow-lg border-4 border-[#39A900] bg-white">
+                                    </div>
+                                    <!-- Cara trasera: contenido más espacioso -->
+                                    <div class="absolute w-full min-h-[650px] h-full backface-hidden rotate-y-180 flex flex-col items-center justify-start bg-white rounded-xl shadow-lg p-6 border-4 border-[#39A900] overflow-y-auto">
+                                        <h2 class="module-title text-3xl md:text-4xl font-bold mb-2 text-center text-[#39A900]">Sistema de Control de Accesos para el SENA</h2>
+                                        <div class="team-info w-full">
+                                            <h3 class="text-lg font-semibold mb-1 text-center">Equipo Desarrollador:</h3>
+                                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-2">
+                                                <!-- Integrante 1 -->
+                                                <div class="flex flex-col items-center bg-white rounded-lg shadow p-2">
+                                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Silvio Ocampo Hernandez" class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-1 border-4 border-[#39A900]">
+                                                    <span class="font-semibold text-gray-900 text-center text-base">Silvio Ocampo Hernandez</span>
+                                                </div>
+                                                <!-- Integrante 2 -->
+                                                <div class="flex flex-col items-center bg-white rounded-lg shadow p-2">
+                                                    <img src="/img/kev.png" alt="Kevin Bentancur Valencia" class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-1 border-4 border-[#39A900]">
+                                                    <span class="font-semibold text-gray-900 text-center text-base">Kevin Bentancur Valencia</span>
+                                                </div>
+                                                <!-- Integrante 3 -->
+                                                <div class="flex flex-col items-center bg-white rounded-lg shadow p-2">
+                                                    <img src="/img/sully.jpg" alt="Miguel Angel Martinez Ospina" class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-1 border-4 border-[#39A900]">
+                                                    <span class="font-semibold text-gray-900 text-center text-base">Miguel Angel Martinez Ospina</span>
+                                                </div>
+                                            </div>
+                                            <p class="mt-3 text-center text-base"><strong>SENA Caldas - CENTRO DE PROCESOS INDUSTRIALES Y CONSTRUCCIÓN</strong></p>
+                                            <p class="text-center text-base">Tecnólogo Análisis y Desarrollo de Software - Ficha: 2847431</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin tarjeta giratoria -->
+                    </div>
+                </section>
+
+                <section id="introduccion" class="module">
+                    <div class="module-content">
+                        <h2 class="module-title">1. Introducción</h2>
+                        <p class="text-lg md:text-xl text-center text-gray-800 mb-4">
+                            Este proyecto busca desarrollar un sistema de control de accesos para los ambientes del SENA, usando métodos avanzados de autenticación. El sistema garantizará seguridad, control eficiente y registro de tiempos.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="abstract" class="module">
+                    <div class="module-content">
+                        <h2 class="module-title">2. Abstract</h2>
+                        <p class="text-lg md:text-xl text-center text-gray-800 mb-4">This project aims to develop an advanced access control system tailored for SENA's environments. Utilizing sophisticated authentication methods, the system provides enhanced security and efficient management of entry permissions. It will enable real-time monitoring and recording of access times, ensuring authorized personnel can seamlessly enter restricted areas while keeping detailed logs for administrative purposes.</p>
+                    </div>
+                </section>
+
+                <section id="problematica" class="module">
+                    <div class="module-content">
+                        <h2 class="module-title">3. Descripción del Proyecto</h2>
+                        <p class="text-lg md:text-xl text-center text-gray-800 mb-4">
+                            El Sistema de Control de Accesos para el SENA es una solución tecnológica diseñada para listar los ambientes y dar acceso únicamente a personas autorizadas. Utiliza dispositivos electrónicos y métodos de autenticación avanzados para asegurar el ingreso correcto en tiempo real.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="objetivos" class="module">
+                    <div class="module-content">
+                        <h2 class="module-title">4. Objetivos</h2>
+                        <h3 class="text-lg md:text-xl font-semibold mb-2">Objetivo General</h3>
+                        <p class="text-lg md:text-xl mb-4">Implementar un sistema eficiente para la reserva y administración de ambientes estudiantiles, optimizando el uso de espacios y garantizando asignación equitativa.</p>
+                        <h3 class="text-lg md:text-xl font-semibold mb-2">Objetivos Específicos</h3>
+                        <ul class="text-lg md:text-xl text-gray-800 mb-4">
+                            <li>Optimizar la gestión de ambientes con plataforma digital en tiempo real.</li>
+                            <li>Automatizar asignación según capacidad, uso y horarios.</li>
+                            <li>Mejorar accesibilidad y transparencia para usuarios.</li>
+                            <li>Implementar controles y reportes para evaluar eficiencia.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="justificacion" class="module">
+    <div class="module-content flex justify-center mb-8">
+        <div class="group perspective w-full max-w-5xl h-auto min-h-[650px]">
+            <div class="relative w-full min-h-[650px] duration-700 transform-style-preserve-3d transition-transform group-hover:rotate-y-180" id="justificacion-card">
+                <!-- Cara frontal: solo imagen grande -->
+                <div class="absolute w-full min-h-[650px] h-full backface-hidden flex items-center justify-center bg-white rounded-xl shadow-lg">
+                    <img src="/img/justi.png" alt="Justificación" class="w-[30rem] h-[30rem] object-contain rounded-xl" />
+                </div>
+                <!-- Cara trasera: texto actualizado -->
+                <div class="absolute w-full min-h-[650px] h-full backface-hidden rotate-y-180 flex flex-col items-center justify-center bg-white rounded-xl shadow-lg px-0 py-0 border-4 border-[#39A900]">
+                    <div class="w-full max-w-4xl p-12">
+                        <h2 class="module-title text-3xl md:text-4xl font-bold mb-4 text-center text-[#39A900]">Justificación</h2>
+                        <p class="text-xl md:text-2xl mb-6 text-center">
+                            El sistema permite listar los ambientes y dar acceso solo a personas autorizadas mediante reconocimiento facial. Este proyecto permitirá garantizar el acceso correcto, reducir riesgos de pérdida o daño de recursos y facilitar la administración.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    // filepath: c:\Users\usuario\Desktop\trabajos_5_trimestre\proyecto SENA\presentacion\indexp.html
+    // Script para girar la tarjeta de justificación
+    const btnJustificacion = document.getElementById('btnJustificacion');
+    const btnCerrarJustificacion = document.getElementById('btnCerrarJustificacion');
+    const card = document.getElementById('justificacion-card');
+    if(btnJustificacion && btnCerrarJustificacion && card){
+        btnJustificacion.addEventListener('click', () => {
+            card.classList.add('rotate-y-180');
+        });
+        btnCerrarJustificacion.addEventListener('click', () => {
+            card.classList.remove('rotate-y-180');
+        });
+    }
+</script>
+
+                <section id="impacto" class="module">
+    <div class="module-content">
+        <h2 class="module-title">6. Impacto</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+            <!-- Impacto Social -->
+            <div class="relative group flex flex-col items-center">
+                <img src="/img/impacto_social.png" alt="Impacto Social" class="impact-img w-40 h-40 md:w-52 md:h-52 object-contain cursor-pointer">
+                <div class="w-64 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-gray-900 rounded-lg shadow-lg p-4 text-sm absolutestatic group-hover:static z-10">
+                    <h3 class="font-bold mb-2">Impacto Social</h3>
+                    <ul class="list-disc ml-4 text-lg md:text-xl">
+                        <li>Mejora la inclusión y la equidad en el acceso a ambientes.</li>
+                        <li>Facilita el acceso a estudiantes</li>
+                        <li>Promueve transparencia y confianza</li>
+                    </ul>
+                </div>
+                <span class="mt-2 font-semibold text-white">Social</span>
+            </div>
+            <!-- Impacto Ambiental -->
+            <div class="relative group flex flex-col items-center">
+                <img src="/img/ambiental.png" alt="Impacto Ambiental" class="impact-img w-40 h-40 md:w-52 md:h-52 object-contain cursor-pointer">
+                <div class="w-64 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-gray-900 rounded-lg shadow-lg p-4 text-sm absolutestatic group-hover:static z-10">
+                    <h3 class="font-bold mb-2">Impacto Ambiental</h3>
+                    <ul class="list-disc ml-4 text-lg md:text-xl">
+                        <li>Reduce uso de papel y desperdicio asociado a la gestión manual.</li>
+                        <li>Disminuye consumo de recursos naturales</li>
+                        <li>Fomenta prácticas sostenibles</li>
+                    </ul>
+                </div>
+                <span class="mt-2 font-semibold text-white">Ambiental</span>
+            </div>
+            <!-- Impacto Económico -->
+            <div class="relative group flex flex-col items-center">
+                <img src="/img/economico.png" alt="Impacto Económico" class="impact-img w-40 h-40 md:w-52 md:h-52 object-contain cursor-pointer">
+                <div class="w-64 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-gray-900 rounded-lg shadow-lg p-4 text-sm absolutestatic group-hover:static z-10">
+                    <h3 class="font-bold mb-2">Impacto Económico</h3>
+                    <ul class="list-disc ml-4 text-lg md:text-xl">
+                        <li>Optimiza recursos y reduce costos administrativos.</li>
+                        <li>Ahorro en tiempo y personal</li>
+                        <li>Mejora la eficiencia en asignación de ambientes</li>
+                    </ul>
+                </div>
+                <span class="mt-2 font-semibold text-white">Económico</span>
+            </div>
+            <!-- Impacto Tecnológico -->
+            <div class="relative group flex flex-col items-center">
+                <img src="/img/tecnologico.png" alt="Impacto Tecnológico" class="impact-img w-40 h-40 md:w-52 md:h-52 object-contain cursor-pointer">
+                <div class="w-64 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-gray-900 rounded-lg shadow-lg p-4 text-sm absolutestatic group-hover:static z-10">
+                    <h3 class="font-bold mb-2">Impacto Tecnológico</h3>
+                    <ul class="list-disc ml-4 text-lg md:text-xl">
+                        <li>Implementa tecnología digital para control y monitoreo en tiempo real.</li>
+                        <li>Automatización de procesos</li>
+                        <li>Integración con sistemas existentes</li>
+                    </ul>
+                </div>
+                <span class="mt-2 font-semibold text-white">Tecnológico</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+                <section id="alcance" class="module">
+                    <div class="module-content">
+                        <h2 class="module-title">7. Alcance</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+                            <!-- Automatizar -->
+                            <label for="modal_automatizar" class="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow p-6 hover:bg-green-100 transition">
+                                <img src="/img/automatizar.jpg" alt="Automatizar" class="w-28 h-28 mb-2 object-contain">
+                                <span class="font-bold text-[#39A900] mb-2">Automatizar</span>
+                                <span class="text-gray-700 text-center text-sm">Procesos de listado y control de accesos a ambientes para personas autorizadas.</span>
+                            </label>
+                            <input type="checkbox" id="modal_automatizar" class="modal-toggle" />
+                            <div class="modal" role="dialog">
+                                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                                    <h3 class="font-bold text-lg text-[#39A900] mb-2">Automatizar</h3>
+                                    <p>
+                                        El sistema permitirá automatizar el listado de ambientes y el control de accesos, asegurando que solo personas autorizadas puedan ingresar, reduciendo la intervención manual y los errores asociados.
+                                    </p>
+                                    <div class="modal-action">
+                                        <label for="modal_automatizar" class="btn text-lg md:text-xl">Cerrar</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Facilitar -->
+                            <label for="modal_facilitar" class="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow p-6 hover:bg-green-100 transition">
+                                <img src="/img/facilitar.jpg" alt="Facilitar" class="w-28 h-28 mb-2 object-contain">
+                                <span class="font-bold text-[#39A900] mb-2">Facilitar</span>
+                                <span class="text-gray-700 text-center text-sm">El acceso a los ambientes listados para usuarios autorizados.</span>
+                            </label>
+                            <input type="checkbox" id="modal_facilitar" class="modal-toggle" />
+                            <div class="modal" role="dialog">
+                                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                                    <h3 class="font-bold text-lg text-[#39A900] mb-2">Facilitar</h3>
+                                    <p>
+                                        Se busca facilitar el acceso a los ambientes listados mediante autenticación avanzada, permitiendo a los usuarios autorizados ingresar de manera sencilla y segura.
+                                    </p>
+                                    <div class="modal-action">
+                                        <label for="modal_facilitar" class="btn text-lg md:text-xl">Cerrar</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Generar -->
+                            <label for="modal_generar" class="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow p-6 hover:bg-green-100 transition">
+                                <img src="/img/generar.jpg" alt="Generar" class="w-28 h-28 mb-2 object-contain">
+                                <span class="font-bold text-[#39A900] mb-2">Generar</span>
+                                <span class="text-gray-700 text-center text-sm">Reportes y análisis de acceso a los ambientes listados.</span>
+                            </label>
+                            <input type="checkbox" id="modal_generar" class="modal-toggle" />
+                            <div class="modal" role="dialog">
+                                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                                    <h3 class="font-bold text-lg text-[#39A900] mb-2">Generar</h3>
+                                    <p>
+                                        El sistema generará reportes detallados sobre el acceso a los ambientes listados, proporcionando información clave para la optimización de recursos y la toma de decisiones.
+                                    </p>
+                                    <div class="modal-action">
+                                        <label for="modal_generar" class="btn text-lg md:text-xl">Cerrar</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Integrar -->
+                            <label for="modal_integrar" class="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow p-6 hover:bg-green-100 transition">
+                                <img src="/img/integrar.png" alt="Integrar" class="w-28 h-28 mb-2 object-contain">
+                                <span class="font-bold text-[#39A900] mb-2">Integrar</span>
+                                <span class="text-gray-700 text-center text-sm">Conectar el sistema de listado y acceso con otras plataformas institucionales.</span>
+                            </label>
+                            <input type="checkbox" id="modal_integrar" class="modal-toggle" />
+                            <div class="modal" role="dialog">
+                                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                                    <h3 class="font-bold text-lg text-[#39A900] mb-2">Integrar</h3>
+                                    <p>
+                                        El alcance incluye la integración del sistema de listado y acceso con otras plataformas institucionales, permitiendo la interoperabilidad y mejora continua de los procesos.
+                                    </p>
+                                    <div class="modal-action">
+                                        <label for="modal_integrar" class="btn text-lg md:text-xl">Cerrar</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tecnologias" class="module">
+    <div class="module-content">
+        <h2 class="module-title">8. Tecnologías</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-8">
+
+            <label for="my_modal_php" class="flex items-center p-3 bg-white shadow-xl rounded-lg h-24 transform transition-transform duration-200 hover:-translate-y-2 cursor-pointer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/langes-220px-PHP-logo.png" alt="Logo PHP" class="w-12 h-12 object-contain mr-3 tech-logo">
+                <h3 class="text-base font-bold text-white">PHP</h3>
+            </label>
+            <input type="checkbox" id="my_modal_php" class="modal-toggle" />
+            <div class="modal" role="dialog">
+                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                    <h3 class="font-bold text-lg">PHP: Programación Backend</h3>
+                    <p class="py-4">
+                        **Puntos Fuertes:** Lenguaje del lado del servidor, ideal para desarrollo web dinámico, compatible con bases de datos, y cuenta con una gran comunidad y frameworks robustos.
+                        <br><br>
+                        **Uso en el proyecto:** Se usaría para la lógica de negocio, la gestión de usuarios, y la interacción con la base de datos para manejar el stock y los pedidos.
+                    </p>
+                    <div class="modal-action">
+                        <label for="my_modal_php" class="btn text-lg md:text-xl">Cerrar</label>
+                    </div>
+                </div>
+            </div>
+
+            <label for="my_modal_sql" class="flex items-center p-3 bg-white shadow-xl rounded-lg h-24 transform transition-transform duration-200 hover:-translate-y-2 cursor-pointer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Sql_data_base_with_logo.png/640px-Sql_data_base_with_logo.png" alt="Logo SQL" class="w-12 h-12 object-contain mr-3 tech-logo">
+                <h3 class="text-base font-bold text-white">SQL</h3>
+            </label>
+            <input type="checkbox" id="my_modal_sql" class="modal-toggle" />
+            <div class="modal" role="dialog">
+                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                    <h3 class="font-bold text-lg">SQL: Gestión de Bases de Datos</h3>
+                    <p class="py-4">
+                        **Puntos Fuertes:** Lenguaje estándar para gestionar bases de datos relacionales, permite crear, leer, actualizar y eliminar datos de forma eficiente, asegurando la integridad de los mismos.
+                        <br><br>
+                        **Uso en el proyecto:** Fundamental para la creación, consulta y manipulación de la base de datos que almacenará información de productos, inventario, ventas, categorías y proveedores.
+                    </p>
+                    <div class="modal-action">
+                        <label for="my_modal_sql" class="btn text-lg md:text-xl">Cerrar</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <label for="my_modal_html" class="flex items-center p-3 bg-white shadow-xl rounded-lg h-24 transform transition-transform duration-200 hover:-translate-y-2 cursor-pointer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/langes-220px-HTML5_logo_and_wordmark.svg.png" alt="Logo HTML" class="w-12 h-12 object-contain mr-3 tech-logo">
+                <h3 class="text-base font-bold text-white">HTML</h3>
+            </label>
+            <input type="checkbox" id="my_modal_html" class="modal-toggle" />
+            <div class="modal" role="dialog">
+                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                    <h3 class="font-bold text-lg">HTML: Estructura Web</h3>
+                    <p class="py-4">
+                        **Puntos Fuertes:** Es el lenguaje fundamental para crear la estructura y el contenido de las páginas web. Fácil de aprender y universalmente soportado por los navegadores.
+                        <br><br>
+                        **Uso en el proyecto:** Se utiliza para definir la estructura de todas las páginas de la aplicación web, organizando el texto, las imágenes, y los elementos interactivos.
+                    </p>
+                    <div class="modal-action">
+                        <label for="my_modal_html" class="btn text-lg md:text-xl">Cerrar</label>
+                    </div>
+                </div>
+            </div>
+
+            <label for="my_modal_css" class="flex items-center p-3 bg-white shadow-xl rounded-lg h-24 transform transition-transform duration-200 hover:-translate-y-2 cursor-pointer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/langes-220px-CSS3_logo_and_wordmark.svg.png" alt="Logo CSS3" class="w-12 h-12 object-contain mr-3 tech-logo">
+                <h3 class="text-base font-bold text-white">CSS</h3>
+            </label>
+            <input type="checkbox" id="my_modal_css" class="modal-toggle" />
+            <div class="modal" role="dialog">
+                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                    <h3 class="font-bold text-lg">CSS: Estilo y Diseño</h3>
+                    <p class="py-4">
+                        **Puntos Fuertes:** Lenguaje para estilizar y dar diseño a las páginas web. Permite controlar la apariencia visual, colores, fuentes, espaciado y disposición de los elementos.
+                        <br><br>
+                        **Uso en el proyecto:** Fundamental para darle una apariencia atractiva y coherente a la interfaz de usuario de la aplicación web, asegurando una buena experiencia visual para el usuario.
+                    </p>
+                    <div class="modal-action">
+                        <label for="my_modal_css" class="btn text-lg md:text-xl">Cerrar</label>
+                    </div>
+                </div>
+            </div>
+
+            <label for="my_modal_javascript" class="flex items-center p-3 bg-white shadow-xl rounded-lg h-24 transform transition-transform duration-200 hover:-translate-y-2 cursor-pointer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/langes-220px-Unofficial_JavaScript_logo_2.svg.png" alt="Logo JavaScript" class="w-12 h-12 object-contain mr-3 tech-logo">
+                <h3 class="text-base font-bold text-white">JavaScript</h3>
+            </label>
+            <input type="checkbox" id="my_modal_javascript" class="modal-toggle" />
+            <div class="modal" role="dialog">
+                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                    <h3 class="font-bold text-lg">JavaScript: Interactividad Web</h3>
+                    <p class="py-4">
+                        **Puntos Fuertes:** Permite añadir interactividad y dinamismo a las páginas web. Es esencial para crear experiencias de usuario ricas y manipular el contenido del lado del cliente.
+                        <br><br>
+                        **Uso en el proyecto:** Se usaría para manejar la lógica del lado del cliente, como validación de formularios, animaciones, peticiones asíncronas a la API y actualizaciones dinámicas de la interfaz.
+                    </p>
+                    <div class="modal-action">
+                        <label for="my_modal_javascript" class="btn text-lg md:text-xl">Cerrar</label>
+                    </div>
+                </div>
+            </div>
+
+            <label for="my_modal_python" class="flex items-center p-3 bg-white shadow-xl rounded-lg h-24 transform transition-transform duration-200 hover:-translate-y-2 cursor-pointer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/langes-220px-Python-logo-notext.svg.png" alt="Logo Python" class="w-12 h-12 object-contain mr-3 tech-logo">
+                <h3 class="text-base font-bold text-black">Python</h3>
+            </label>
+            <input type="checkbox" id="my_modal_python" class="modal-toggle" />
+            <div class="modal" role="dialog">
+                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                    <h3 class="font-bold text-lg">Python: Procesamiento de Datos y Lógica</h3>
+                    <p class="py-4">
+                        **Puntos Fuertes:** Lenguaje de propósito general, muy legible y versátil, con una vasta colección de librerías para ciencia de datos, IA, desarrollo web y automatización.
+                        <br><br>
+                        **Uso en el proyecto:** Podría usarse para scripts de backend, análisis de datos de inventario o ventas, o para implementar la lógica de control si se extiende a un sistema IoT más complejo.
+                    </p>
+                    <div class="modal-action">
+                        <label for="my_modal_python" class="btn text-lg md:text-xl">Cerrar</label>
+                    </div>
+                </div>
+            </div>
+
+            <label for="my_modal_mysql" class="flex items-center p-3 bg-white shadow-xl rounded-lg h-24 transform transition-transform duration-200 hover:-translate-y-2 cursor-pointer">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/MySQL_logo.svg/langes-220px-MySQL_logo.svg.png" alt="Logo MySQL" class="w-12 h-12 object-contain mr-3 tech-logo">
+                <h3 class="text-base font-bold text-white">MySQL</h3>
+            </label>
+            <input type="checkbox" id="my_modal_mysql" class="modal-toggle" />
+            <div class="modal" role="dialog">
+                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                    <h3 class="font-bold text-lg">MySQL: Base de Datos Relacional</h3>
+                    <p class="py-4">
+                        **Puntos Fuertes:** Es un sistema de gestión de bases de datos relacional (RDBMS) popular, de código abierto, altamente confiable, escalable y compatible con SQL.
+                        <br><br>
+                        **Uso en el proyecto:** Será la base de datos principal para almacenar toda la información del sistema, incluyendo productos, categorías, proveedores, movimientos de inventario y ventas.
+                    </p>
+                    <div class="modal-action">
+                        <label for="my_modal_mysql" class="btn text-lg md:text-xl">Cerrar</label>
+                    </div>
+                </div>
+            </div>
+
+            <label for="my_modal_protoboard" class="flex items-center p-3 bg-white shadow-xl rounded-lg h-24 transform transition-transform duration-200 hover:-translate-y-2 cursor-pointer">
+                <img src="/img/freepik__a-protoboard-logo-featuring-a-stylized-circuit-dia__61376.jpeg" alt="Logo Protoboard" class="w-12 h-12 object-contain mr-3 tech-logo">
+                <h3 class="text-base font-bold text-white">Protoboard</h3>
+            </label>
+            <input type="checkbox" id="my_modal_protoboard" class="modal-toggle" />
+            <div class="modal" role="dialog">
+                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                    <h3 class="font-bold text-lg">Protoboard: Prototipado Electrónico</h3>
+                    <p class="py-4">
+                        **Puntos Fuertes:** Placa de prototipado que permite construir y probar circuitos electrónicos de forma temporal sin necesidad de soldadura. Es reutilizable y facilita la experimentación.
+                        <br><br>
+                        **Uso en el proyecto:** Se utilizará en la fase de desarrollo del hardware para montar y probar los circuitos con Arduino y los componentes electrónicos antes de una implementación final.
+                    </p>
+                    <div class="modal-action">
+                        <label for="my_modal_protoboard" class="btn text-lg md:text-xl">Cerrar</label>
+                    </div>
+                </div>
+            </div>
+
+            <label for="my_modal_componentes" class="flex items-center p-3 bg-white shadow-xl rounded-lg h-24 transform transition-transform duration-200 hover:-translate-y-2 cursor-pointer">
+                <img src="/img/freepik__logo-featuring-a-network-of-interconnected-nodes-r__61377.jpeg" alt="Logo Componentes Electrónicos" class="w-12 h-12 object-contain mr-3 tech-logo">
+                <h3 class="text-base font-bold text-white">Componentes Electrónicos</h3>
+            </label>
+            <input type="checkbox" id="my_modal_componentes" class="modal-toggle" />
+            <div class="modal" role="dialog">
+                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                    <h3 class="font-bold text-lg">Componentes Electrónicos: Base del Hardware</h3>
+                    <p class="py-4">
+                        **Puntos Fuertes:** Son los bloques de construcción de cualquier circuito electrónico (resistencias, condensadores, sensores, LEDs, etc.), cada uno con una función específica y esencial.
+                        <br><br>
+                        **Uso en el proyecto:** Se utilizarán para construir la parte física del sistema (sensores, actuadores, módulos de comunicación) que interactuarán con los ambientes a controlar.
+                    </p>
+                    <div class="modal-action">
+                        <label for="my_modal_componentes" class="btn text-lg md:text-xl">Cerrar</label>
+                    </div>
+                </div>
+            </div>
+
+            <label for="my_modal_word" class="flex items-center p-3 bg-white shadow-xl rounded-lg h-24 transform transition-transform duration-200 hover:-translate-y-2 cursor-pointer">
+                <img src="/img/word.jpg" alt="Logo Word" class="w-12 h-12 object-contain mr-3 tech-logo">
+                <h3 class="text-base font-bold text-white">Word</h3>
+            </label>
+            <input type="checkbox" id="my_modal_word" class="modal-toggle" />
+            <div class="modal" role="dialog">
+                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                    <h3 class="font-bold text-lg">Word: Procesador de Textos</h3>
+                    <p class="py-4">
+                        **Puntos Fuertes:** Herramienta ampliamente utilizada para la creación y edición de documentos de texto con formato, incluyendo tablas, imágenes y gráficos.
+                        <br><br>
+                        **Uso en el proyecto:** Se emplea para la elaboración de la documentación del proyecto, informes, manuales de usuario y cualquier otro documento textual necesario.
+                    </p>
+                    <div class="modal-action">
+                        <label for="my_modal_word" class="btn text-lg md:text-xl">Cerrar</label>
+                    </div>
+                </div>
+            </div>
+
+            <label for="my_modal_excel" class="flex items-center p-3 bg-white shadow-xl rounded-lg h-24 transform transition-transform duration-200 hover:-translate-y-2 cursor-pointer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg/langes-220px-Microsoft_Office_Excel_%282019%E2%80%93present%29.svg.png" alt="Logo Excel" class="w-12 h-12 object-contain mr-3 tech-logo">
+                <h3 class="text-base font-bold text-white">Excel</h3>
+            </label>
+            <input type="checkbox" id="my_modal_excel" class="modal-toggle" />
+            <div class="modal" role="dialog">
+                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                    <h3 class="font-bold text-lg">Excel: Hojas de Cálculo y Análisis</h3>
+                    <p class="py-4">
+                        **Puntos Fuertes:** Aplicación de hojas de cálculo potente para organizar, analizar y visualizar datos numéricos, realizar cálculos complejos y crear gráficos.
+                        <br><br>
+                        **Uso en el proyecto:** Puede utilizarse para la gestión inicial de datos, planificación de recursos, o para un análisis básico de datos exportados de la base de datos.
+                    </p>
+                    <div class="modal-action">
+                        <label for="my_modal_excel" class="btn text-lg md:text-xl">Cerrar</label>
+                    </div>
+                </div>
+            </div>
+
+            <label for="my_modal_vscode" class="flex items-center p-3 bg-white shadow-xl rounded-lg h-24 transform transition-transform duration-200 hover:-translate-y-2 cursor-pointer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/langes-220px-Visual_Studio_Code_1.35_icon.svg.png" alt="Logo Visual Studio Code" class="w-12 h-12 object-contain mr-3 tech-logo">
+                <h3 class="text-base font-bold text-white">Visual Studio Code</h3>
+            </label>
+            <input type="checkbox" id="my_modal_vscode" class="modal-toggle" />
+            <div class="modal" role="dialog">
+                <div class="modal-box bg-white text-black text-lg md:text-xl">
+                    <h3 class="font-bold text-lg">Visual Studio Code: Editor de Código</h3>
+                    <p class="py-4">
+                        **Puntos Fuertes:** Editor de código fuente ligero y potente, compatible con una gran variedad de lenguajes de programación y ofrece extensiones para ampliar funcionalidades, depuración y control de versiones.
+                        <br><br>
+                        **Uso en el proyecto:** Será el entorno de desarrollo principal para escribir y editar el código de PHP, HTML, CSS, JavaScript y Python, facilitando la programación y depuración.
+                    </p>
+                    <div class="modal-action">
+                        <label for="my_modal_vscode" class="btn text-lg md:text-xl">Cerrar</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <p class="mt-8">Estas tecnologías habilitan la programación, gestión de datos y control hardware. Integran sistemas digitales y electrónicos para el control eficiente de ambientes.</p>
+    </div>
+</section>
+
+                <section id="antecedentes" class="module">
+                    <div class="module-content">
+                        <h2 class="module-title">9. Antecedentes</h2>
+                        <div class="antecedent-item flex justify-between items-center mb-6"> <div>
+                                <h3>Ejemplo: Susuerte</h3>
+                                <p>Referencia personalizada para ambientes con acceso restringido.</p>
+                            </div>
+                            <img src="/img/susuerte.png" alt="Logo Susuerte" class="w-24 h-auto object-contain ml-4"> </div>
+                        <div class="antecedent-item flex justify-between items-center mb-6">
+                            <div>
+                                <h3>Ejemplo: Centro Comercial Mallplaza</h3>
+                                <p>Control específico para zonas públicas y comerciales.</p>
+                            </div>
+                            <img src="/img/mall.png" alt="Logo Mallplaza" class="w-24 h-auto object-contain ml-4">
+                        </div>
+                        <div class="antecedent-item flex justify-between items-center">
+                            <div>
+                                <h3>Ejemplo: CablePlaza</h3>
+                                <p>Gestión de accesos para áreas técnicas y administrativas.</p>
+                            </div>
+                            <img src="/img/cable.png" alt="Logo CablePlaza" class="w-24 h-auto object-contain ml-4">
+                        </div>
+                    </div>
+                </section>
+
+                <section id="prototipo" class="module">
+                    <div class="module-content">
+                        <h2 class="module-title">10. Prototipo</h2>
+                        <div class="prototipo-section">
+                            <h3>Interfaz de Monitoreo</h3>
+                            <p>Visualización en tiempo real del estado del sistema y control de accesos mediante un panel intuitivo.</p>
+                            <img src="/img/Captura de pantalla 2025-03-25 105057.png" alt="Interfaz de Monitoreo del Estado de Ambientes" class="placeholder-img">
+                            <p>Este diagrama representa la interfaz de monitoreo donde se visualiza el estado de diferentes ambientes (disponible u ocupado) junto con la hora.</p>
+                        </div>
+                        <div class="prototipo-section">
+                            <h3>Proyección del Circuito</h3>
+                            <p>Representación gráfica del diseño del circuito para facilitar la comprensión y desarrollo del prototipo.</p>
+                            <img src="/img/Captura de pantalla 2025-04-30 075817.png" alt="Diagrama del Circuito con Arduino y Teclado" class="placeholder-img">
+                            <p>Este diagrama muestra la proyección del circuito electrónico utilizando un Arduino UNO, un teclado numérico y un buzzer, elementos clave para el sistema de control de accesos.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="integracion-seguridad" class="module">
+                    <div class="module-content">
+                        <h2 class="module-title">11. Integración y Seguridad de Datos</h2>
+                        <ul class="text-lg md:text-xl text-gray-800 mb-4">
+                            <li>**Integración en la Nube:** Almacenamiento y procesamiento seguro accesible desde cualquier dispositivo.</li>
+                            <li>**Integración con Redes:** Comunicación en tiempo real con otros sistemas del SENA.</li>
+                            <li>**Integración con Bases de Datos:** Consulta y almacenamiento de usuarios, permisos y registros.</li>
+                            <li>**Encriptación de Datos:** Protección de información personal durante transmisión y almacenamiento.</li>
+                            <li>**Control de Acceso:** Restricción de acceso a datos solo para usuarios autorizados.</li>
+                            <li>**Políticas de Privacidad:** Manejo responsable de la información personal de los usuarios.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="construccion-codigo" class="module">
+                    <div class="module-content">
+                        <h2 class="module-title">11. Construcción de Código</h2>
+                        <p>Aquí se detallarían los aspectos clave de la construcción del código, como la arquitectura, patrones de diseño, y módulos principales del software.</p>
+                        <img src="/img/codigo_p.png" alt="Captura de Código" class="placeholder-img">
+                    </div>
+                </section>
+                <section id="recomendaciones" class="module">
+                    <div class="module-content">
+                        <h2 class="module-title">12. Recomendaciones para Mejorar el Sistema</h2>
+                        <ul class="text-lg md:text-xl text-gray-800 mb-4">
+                            <li>Migrar a versión más reciente de PHP: Mejorará seguridad y rendimiento.</li>
+                            <li>Contratar máquina virtual: Optimiza la ejecución y escalabilidad del sistema.</li>
+                            <li>Implementar módulo de inventario: Control eficaz de equipos y recursos.</li>
+                            <li>Incorporar chat online: Facilita comunicación rápida entre usuarios.</li>
+                            <li>Utilizar Raspberry: Para control físico de accesos y sensores.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="agradecimientos" class="module">
+    <div class="module-content">
+        <!-- Tarjeta giratoria para Agradecimientos -->
+        <div class="flex justify-center mb-8">
+            <div class="group perspective w-full max-w-3xl h-auto min-h-[300px] md:min-h-[300px]">
+                <div class="relative w-full min-h-[300px] md:min-h-[300px] h-[300px] md:h-[300px] duration-700 transform-style-preserve-3d group-hover:rotate-y-180 transition-transform">
+                    <!-- Cara frontal: imagen de agradecimiento -->
+                    <div class="absolute w-full min-h-[300px] md:min-h-[300px] h-[300px] md:h-[300px] backface-hidden flex items-center justify-center bg-white rounded-xl shadow-lg">
+                        <img src="/img/agradecimiento.png" alt="Agradecimiento" class="max-h-72 md:max-h-80 w-auto object-contain">
+                    </div>
+                    <!-- Cara trasera: mensaje de agradecimiento -->
+                    <div class="absolute w-full min-h-[300px] md:min-h-[300px] h-[300px] md:h-[300px] backface-hidden rotate-y-180 flex flex-col items-center justify-center bg-white rounded-xl shadow-lg p-8 border-4 border-[#39A900] overflow-y-auto">
+                        <h2 class="module-title text-2xl mb-4 text-center text-[#39A900]">¡Gracias por su Atención!</h2>
+                        <p class="mb-2 text-center text-gray-800">Agradecemos su interés en el Sistema de Control de Accesos para el SENA.</p>
+                        <p class="text-center text-gray-800">Esperamos trabajar juntos para optimizar la gestión y seguridad de los ambientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin tarjeta giratoria -->
+    </div>
+</section>
+            </main>
+        </div>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>
+
+<!-- Agrega este CSS en tu style.css o en el <head> -->
+<style>
+.perspective {
+  perspective: 1200px;
+}
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+.group:hover .group-hover\:rotate-y-180 {
+  transform: rotateY(180deg);
+}
+/* Ajuste para que el contenido trasero nunca se recorte */
+@media (min-width: 768px) {
+  .min-h-\[650px\] {
+    min-height: 650px !important;
+  }
+  .min-h-\[500px\] {
+    min-height: 500px !important;
+  }
+}
+</style>
+

@@ -1,0 +1,396 @@
+/* Variables de color */
+:root {
+    --sena-green: #39a900;
+    --dark-grey: #333;
+    --light-grey: #f4f4f4;
+    --white: #ffffff;
+    --text-color: #444;
+}
+
+/* Reset básico (Tailwind ya hace gran parte de esto, pero mantenemos algunos globales) */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-grey);
+    overflow-x: hidden; /* Evita scroll horizontal no deseado */
+    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces de anclaje */
+}
+
+/* Encabezado Principal */
+.main-header {
+    background-color: var(--sena-green);
+    color: var(--white);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky; /* Permanece en la parte superior al hacer scroll */
+    top: 0;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Permite que el contenido del encabezado ocupe el espacio disponible */
+}
+
+.sena-logo {
+    height: 50px; /* Tamaño del logo del SENA */
+    margin-right: 15px;
+    /* Si el logo del SENA necesita un filtro para ser visible sobre el fondo verde, descomentar: */
+    /* filter: brightness(0) invert(1); */
+}
+
+.main-header h1 {
+    font-size: 1.8em;
+    margin: 0;
+    flex-grow: 1; /* Permite que el título ocupe el espacio disponible */
+}
+
+/* Menú de Navegación */
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los ítems del menú se envuelvan */
+    justify-content: flex-end; /* Alinea los ítems a la derecha */
+    padding: 0; /* Elimina el padding predeterminado de la lista */
+    margin: 0; /* Elimina el margen predeterminado de la lista */
+}
+
+.nav-menu li {
+    margin-left: 20px; /* Espacio entre los ítems del menú */
+}
+
+.nav-menu a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 0;
+    position: relative; /* Para la animación de la línea inferior */
+    transition: color 0.3s ease;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--white);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    width: 100%;
+}
+.nav-menu a:hover {
+    color: var(--light-grey);
+}
+
+/* Contenido Principal (Módulos de la Presentación) */
+main {
+    padding: 20px;
+    max-width: 1200px; /* Ancho máximo para el contenido principal */
+    margin: 20px auto; /* Centra el contenido principal */
+}
+
+.module {
+    background-color: var(--white);
+    padding: 40px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    opacity: 0; /* Inicialmente oculto para la animación */
+    transform: translateY(20px); /* Ligeramente desplazado para la animación */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transición suave */
+}
+
+.module.active {
+    opacity: 1; /* Visible cuando está activo */
+    transform: translateY(0); /* Vuelve a su posición original */
+}
+
+.module:not(.active) {
+    display: none; /* Oculta los módulos no activos */
+}
+
+.module-title {
+    color: var(--sena-green);
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    border-bottom: 3px solid var(--sena-green);
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.module h3 {
+    color: var(--dark-grey);
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.module p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.module ul {
+    list-style: disc;
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+.module ol {
+    list-style: decimal;
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+.module li {
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
+
+/* Estilos específicos de secciones */
+.team-info ul {
+    list-style: none; /* Remueve los puntos de lista */
+    margin-left: 0;
+    padding: 0;
+}
+.team-info li {
+    font-weight: bold;
+    color: var(--sena-green);
+    margin-bottom: 5px;
+}
+
+.problem-points,
+.impact-category,
+.benefit-item,
+.key-benefit-item,
+.antecedent-item,
+.prototipo-section {
+    background-color: var(--light-grey);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border-left: 5px solid var(--sena-green); /* Barra verde a la izquierda */
+}
+
+.problem-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columnas responsivas */
+    gap: 20px; /* Espacio entre las columnas */
+}
+
+.problem-item h3 {
+    color: var(--sena-green);
+    font-size: 1.3em;
+    margin-top: 0;
+}
+
+/* Estilo para imágenes de prototipos y diagramas */
+.placeholder-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.diagram-placeholder {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.diagram-placeholder img {
+    margin: 15px; /* Espacio alrededor de las imágenes en la sección de diagramas */
+}
+
+pre {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+
+.tech-item {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+/* Estilo para los logos dentro de las casillas de tecnología */
+.tech-logo {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Responsividad */
+@media (max-width: 992px) {
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+    .header-content {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .main-header h1 {
+        font-size: 1.5em;
+    }
+    .nav-menu ul {
+        justify-content: flex-start;
+        width: 100%;
+    }
+    .nav-menu li {
+        margin-left: 0;
+        margin-right: 15px;
+        margin-bottom: 5px;
+    }
+    .nav-menu a {
+        font-size: 0.85em;
+    }
+    .module-title {
+        font-size: 2em;
+    }
+    /* .tech-grid se ajusta automáticamente con las clases md:grid-cols-4 etc. */
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 15px;
+    }
+    .module {
+        padding: 25px;
+    }
+    .module-title {
+        font-size: 1.8em;
+    }
+    .module h3 {
+        font-size: 1.3em;
+    }
+    .module p, .module li {
+        font-size: 1em;
+    }
+    .sena-logo {
+        height: 40px;
+    }
+    /* .tech-grid se ajusta automáticamente con las clases sm:grid-cols-3 etc. */
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        padding: 10px 15px;
+    }
+    .main-header h1 {
+        font-size: 1.2em;
+    }
+    .nav-menu li {
+        margin-right: 10px;
+    }
+    .nav-menu a {
+        font-size: 0.85em;
+    }
+    .module {
+        padding: 20px;
+    }
+    .module-title {
+        font-size: 1.5em;
+    }
+    .problem-points {
+        grid-template-columns: 1fr; /* Una columna en pantallas muy pequeñas */
+    }
+    /* .tech-grid se ajusta automáticamente con las clases grid-cols-2 etc. */
+}
+.impact-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Para responsividad */
+}
+
+.impact-text {
+    flex: 1 1 60%;
+}
+
+.impact-img {
+    flex: 1 1 35%;
+    max-width: 180px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajuste para los modales de tecnologías utilizadas */
+.modal::before {
+  background: rgba(0,0,0,0.5) !important; /* Fondo overlay oscuro para enfoque */
+}
+
+.modal-box {
+  background: #fff !important;   /* Fondo blanco para la caja del modal */
+  color: #111 !important;        /* Texto negro para la caja del modal */
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+/* Opcional: mejora el contraste de los títulos dentro del modal */
+.modal-box h3 {
+  color: #39A900 !important;
+}
+
+/* Opcional: mejora el contraste de los botones de cerrar */
+.modal-action .btn {
+  background: #39A900 !important;
+  color: #fff !important;
+  border: none;
+}
+
+label[for^="my_modal_"] h3 {
+  color: #111 !important; /* Títulos de tarjetas fuera del modal en negro */
+}
+
+#sidebar {
+  max-height: 100vh;
+  overflow-y: auto !important;
+  /* Para que el scroll solo aparezca si es necesario */
+  scrollbar-width: thin;
+  scrollbar-color: #39A900 #e5e7eb;
+}
+.perspective {
+  perspective: 1200px;
+}
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+.group:hover .group-hover\:rotate-y-180 {
+  transform: rotateY(180deg);
+}
